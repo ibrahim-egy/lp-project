@@ -50,14 +50,13 @@ const navMenu = document.querySelector("#navbar__list");
 //     </li>
 for (let i = 0; i < allSections.length; i++) {
     const listItem = document.createElement("li");
-    const listItemLink = document.createElement("a");
-
     // href for inner anchor tag
     const href = `#${allSections[i].getAttribute("id")}`;
     // textContent of the anchor tag ex: Section 1;
     const textContent = allSections[i].getAttribute('data-nav');
 
-    // adding class menu__link to apply the css styles
+    // creating anchor tag with innerHtml while adding class 'menu__link' to apply the css styles
+    // filling the innerText with the data-nav attribute from sections to reduce reflow and repaint
     listItem.innerHTML = `<a class="menu__link" href="${href}">${textContent}</a>`
 
     // appending list item as a child to #navbar__list ul
@@ -79,7 +78,7 @@ const allNavItems = document.querySelectorAll('.menu__link')
 const navBar = document.querySelector('#navbar__list')
 
 // Added event listener to parent instead of each list item => Event Delegation.
-navBar.addEventListener('click', function (event) {
+navBar.addEventListener('click', (event) => {
     // prevent default action.
     event.preventDefault();
     const anchor = event.target
@@ -128,7 +127,7 @@ window.addEventListener('scroll', update)
 
 // hide navigation after 1/4s when stop scrolling => Optional
 let isScrolling;
-window.addEventListener('scroll', function () {
+window.addEventListener('scroll', () => {
     window.clearTimeout(isScrolling)
     const navbar =  document.querySelector('.navbar__menu')
     navbar.classList.add('invisible')
