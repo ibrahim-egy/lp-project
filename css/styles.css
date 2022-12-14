@@ -64,6 +64,32 @@ section {
 /* ---- Module Rules ---- */
 
 /* Navigation Styles*/
+
+.navbar__menu {
+    transition: .3s all;
+    background-color: #eee;
+}
+
+.navbar__menu.invisible {
+    opacity: 0;
+    /* transform: scaleY(0); */
+    animation: hide 2s;
+}
+
+@keyframes hide {
+    0% {
+        transform: scaleY(1);
+    }
+
+    30% {
+        transform: scaleY(.3);
+    }
+
+    100% {
+        transform: scaleY(0);
+    }
+}
+
 .navbar__menu ul {
     padding-left: 0;
     margin: 0;
@@ -88,9 +114,16 @@ section {
     transition: ease 0.3s all;
 }
 
+.navbar__menu .menu__link.active {
+    background: #333;
+    color: #fff;
+    transition: ease 0.3s all;
+}
+
+
 /* Header Styles */
 .page__header {
-    background: #fff;
+    background: transparent;
     position: fixed;
     top: 0;
     width: 100%;

@@ -111,26 +111,32 @@ function update() {
     for (section of allSections) {
         const rect = section.getBoundingClientRect();
         if (rect.top < 300 && rect.top > -300) {
-            section.classList.add('your-active-class')
+            section.classList.add('your-active-class');
+            const allLinks = document.querySelectorAll('.menu__link');
+            for (link of allLinks) {
+                if (link.textContent === section.getAttribute('data-nav')) {
+                    link.classList.add('active')
+                } else {
+                    link.classList.remove('active')
+                }
+            }
         } else {
             section.classList.remove('your-active-class')
         }
     }
-
+    
 }
-
 window.addEventListener('scroll', update)
 
 
-// hide navigation after 1s when stop scrolling
-
-function showNavbar () {
-
-    document.querySelector('#navbar__list').style.visibility = 'visible';
-
-}
-
+// hide navigation after 1/4s when stop scrolling
+let isScrolling;
 window.addEventListener('scroll', function () {
-    setTimeout(showNavbar, 2000)
+    window.clearTimeout(isScrolling)
+    const navbar =  document.querySelector('.navbar__menu')
+    navbar.classList.add('invisible')
+    isScrolling = window.setTimeout( function () {
+        const navbar =  document.querySelector('.navbar__menu')
+        navbar.classList.remove('invisible')
+    }, 150)
 })
-
