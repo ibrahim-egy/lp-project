@@ -65,17 +65,6 @@ for (let i = 0; i < allSections.length; i++) {
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
 /**
  * End Main Functions
  * Begin Events
@@ -89,12 +78,17 @@ for (let i = 0; i < allSections.length; i++) {
 const allNavItems = document.querySelectorAll('.menu__link')
 const navBar = document.querySelector('#navbar__list')
 
+// Added event listener to parent instead of each list item => Event Delegation.
 navBar.addEventListener('click', function (event) {
+    // prevent default action.
     event.preventDefault();
     const anchor = event.target
+
+    // Respond only when an anchor tag is clicked.
     if(anchor.tagName === 'A') {
         
         const section = document.querySelector(anchor.getAttribute('href'))
+        // calculating the distance from the top to scroll.
         const distanceToScroll = section.offsetTop;
         window.scrollTo({
             top: distanceToScroll,
@@ -104,14 +98,17 @@ navBar.addEventListener('click', function (event) {
 })
 
 // Set sections as active
-// Add class 'active' to section when near top of viewport
+// Add class 'your-active-class' to section when near top of viewport
 
 function update() {
     
     for (section of allSections) {
         const rect = section.getBoundingClientRect();
+        // checking if section is within 300px from the viewport.
         if (rect.top < 300 && rect.top > -300) {
+            // adding class
             section.classList.add('your-active-class');
+            // Adding class "active" to list item when section is in viewport => Optional
             const allLinks = document.querySelectorAll('.menu__link');
             for (link of allLinks) {
                 if (link.textContent === section.getAttribute('data-nav')) {
@@ -129,7 +126,7 @@ function update() {
 window.addEventListener('scroll', update)
 
 
-// hide navigation after 1/4s when stop scrolling
+// hide navigation after 1/4s when stop scrolling => Optional
 let isScrolling;
 window.addEventListener('scroll', function () {
     window.clearTimeout(isScrolling)
@@ -138,5 +135,16 @@ window.addEventListener('scroll', function () {
     isScrolling = window.setTimeout( function () {
         const navbar =  document.querySelector('.navbar__menu')
         navbar.classList.remove('invisible')
-    }, 150)
+    }, 250)
+})
+
+
+// scroll to top button functionality
+
+const scrollButton = document.querySelector('.scroll-tp__btn');
+scrollButton.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    })
 })
