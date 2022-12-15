@@ -70,7 +70,7 @@ for (let i = 0; i < allSections.length; i++) {
  * 
 */
 
-// Build menu 
+// Build menu
 
 // Scroll to section on link click
 // Scroll to section on click using scrollTo method
@@ -97,7 +97,7 @@ navBar.addEventListener('click', (event) => {
 })
 
 // Set sections as active
-// Add class 'your-active-class' to section when near top of viewport
+// Add class 'highlight' to section when near top of viewport
 
 function update() {
     
@@ -106,7 +106,7 @@ function update() {
         // checking if section is within 300px from the viewport.
         if (rect.top < 300 && rect.top > -300) {
             // adding class
-            section.classList.add('your-active-class');
+            section.classList.add('highlight');
             // Adding class "active" to list item when section is in viewport => Optional
             const allLinks = document.querySelectorAll('.menu__link');
             for (link of allLinks) {
@@ -117,17 +117,27 @@ function update() {
                 }
             }
         } else {
-            section.classList.remove('your-active-class')
+            section.classList.remove('highlight')
         }
     }
-    
+
 }
 window.addEventListener('scroll', update)
 
 
-// hide navigation after 1/4s when stop scrolling => Optional
+// show navigation after 1/4s when stop scrolling => Optional
+// show scroll top up button when near page end.
 let isScrolling;
 window.addEventListener('scroll', () => {
+    const distance = allSections[3].getBoundingClientRect().top
+    // show scroll top up button
+    if (distance <= 300) {
+        scrollButton.classList.add('show')
+    } else {
+        scrollButton.classList.remove('show')
+    }
+
+    // show navigation
     window.clearTimeout(isScrolling)
     const navbar =  document.querySelector('.navbar__menu')
     navbar.classList.add('invisible')
