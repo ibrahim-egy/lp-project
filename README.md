@@ -1,15 +1,28 @@
 # Landing Page Project
 
+# Table of contents
+
+- [Project Overview](#quick-overview)
+- [Dependencies](#dependencies)
+- [Usage](#usage)
+
 ## Quick overview
-![](./Demo.gif)
+
+multi-section landing webpage that can dynamically change according to the user interactions with the webpage
+
+- Building navigation according the sections found in the DOM
+- Changing styles on user scroll
+- Smooth scroll behavior to improve user experience
 
 
-* [Instructions](#instructions)
+![Project Preview GIF](./Demo.gif)
 
-## Instructions
+## Dependencies 
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+- None required
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Usage
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+No dependencies required its only vanilla javaScript
+
+Interact with user according to event and actions happening on the page.
