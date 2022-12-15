@@ -1,6 +1,8 @@
 # Landing Page Project
 
-## Table of Contents
+## Quick overview
+![](./Demo.gif)
+
 
 * [Instructions](#instructions)
 
